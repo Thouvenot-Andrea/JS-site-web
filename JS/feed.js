@@ -45,6 +45,11 @@ function fetchTodos() {
             nextTodoIndex += maxTodos;
         });
 }
-
+// créer une fonction pour actualiser la page.
+window.onload = function () {
+    fetchTodos();
+    const refreshIcon = document.getElementById('refresh-icon');
+    refreshIcon.addEventListener('click', fetchTodos);
+};
 
 

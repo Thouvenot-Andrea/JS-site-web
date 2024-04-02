@@ -27,14 +27,17 @@ function displayTodo(todo) {
 // créer une fonction qui récupère les produits de "url"
 let nextTodoIndex = 0;
 
-function fetchTodos() {
+function fetchPosts() {
     const container = document.getElementById('container');
     container.innerHTML = '';
+    // Envoie une requête GET à l'URL spécifiée pour récupérer des articles (posts)
     fetch('https://jsonplaceholder.typicode.com/posts')
+        // Une fois la réponse reçue, la transforme en format JSON
         .then((response) => response.json())
+        // Une fois les données JSON obtenues, les traite dans la fonction fléchée suivante
         .then((todos) => {
-            const maxTodos = 3;
-            for (let i = nextTodoIndex; i < nextTodoIndex + maxTodos; i++) {
+            const maxPosts = 3;
+            for (let i = nextTodoIndex; i < nextTodoIndex + maxPosts; i++) {
                 //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos
                 if (i >= todos.length) {
                     break
@@ -43,14 +46,14 @@ function fetchTodos() {
                     displayTodo(todo);
                 }
             }
-            nextTodoIndex += maxTodos;
+            nextTodoIndex += maxPosts;
         });
 }
 // créer une fonction pour actualiser la page.
 window.onload = function () {
-    fetchTodos();
+    fetchPosts();
     const refreshIcon = document.getElementById('refresh-icon');
-    refreshIcon.addEventListener('click', fetchTodos);
+    refreshIcon.addEventListener('click', fetchPosts);
 };
 
 

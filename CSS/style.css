@@ -9,10 +9,13 @@
 }
 
 .article-container{
+    text-align: center;
     div{
         color: red;
     }
     h2{
         color: blue;
+        text-transform: uppercase;
+        font-size: 20px;
     }
 }

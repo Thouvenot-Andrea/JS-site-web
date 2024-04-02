@@ -24,3 +24,27 @@ function displayTodo(todo) {
     container.appendChild(hr);
 }
 
+// créer une fonction qui récupère les produits de "url"
+let nextTodoIndex = 0;
+
+function fetchTodos() {
+    const container = document.getElementById('container');
+    container.innerHTML = '';
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then((response) => response.json())
+        .then((todos) => {
+            const maxTodos = 4;
+            for (let i = nextTodoIndex; i < nextTodoIndex + maxTodos; i++) {
+                if (i >= todos.length) {
+                    break
+                } else {
+                    const todo = todos[i];
+                    displayTodo(todo);
+                }
+            }
+            nextTodoIndex += maxTodos;
+        });
+}
+
+
+

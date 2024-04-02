@@ -7,3 +7,12 @@
 .container{
     background-color: azure;
 }
+
+.article-container{
+    div{
+        color: red;
+    }
+    h2{
+        color: blue;
+    }
+}

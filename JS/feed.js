@@ -84,25 +84,26 @@ function displayPokedex(pokedex) {
     container.appendChild(articleContainer);
 
     // Ligne de séparation en dehors du conteneur de l'article
-    const hr = document.createElement('hr');
-    container.appendChild(hr);
+    // const hr = document.createElement('hr');
+    // container.appendChild(hr);
 }
 
-let nextTodoIndex = 0;
-const maxPosts = 2;
+let nextTodoIndex = 1;
+const maxPosts = 3;
+
 
 function fetchPokemon() {
     const container = document.getElementById('container');
-    container.innerHTML = '';
+    // container.innerHTML = '';
     fetch('https://tyradex.vercel.app/api/v1/pokemon')
         .then((response) => {
             return response.json()
         })
         .then(
-            (pokemon) => {
-                for (let i = nextTodoIndex; i < nextTodoIndex + maxPosts && pokemon.length; i++) {
-                    //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos
-                    displayPokedex(pokemon[i]);
+            (pokemons) => {
+                for (let i = 0; i < maxPosts && pokemons.length; i++) {
+                    //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos et que là longueur de pokemon
+                    displayPokedex(pokemons[i + nextTodoIndex]);
                 }
                 nextTodoIndex += maxPosts;
             });
@@ -116,3 +117,14 @@ window.onload = function () {
     refreshIcon.addEventListener('click', fetchPokemon);
     // si on appuie sur le bouton ça retourne dans la fonction
 };
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.getElementById("menuButton");
+    const submenu = document.querySelector(".submenu");
+
+    menuButton.addEventListener("click", function () {
+        submenu.classList.toggle("show");
+    });
+});
+

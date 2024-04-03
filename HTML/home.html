@@ -18,13 +18,33 @@
             </ul>
         </ul>
     </nav>
+    <div class="formulaire_hidden">
+        <ul class="formulaire">
+            <li class="formulaireButton" id="formulaire">
+                Formulaire
+            </li>
+            <ul class="submenuFormulaire">
+                <li>
+                    <form class="formulaire1" id="addPokemonForm">
+                        <label for="pokemonName">Nom du Pokémon:</label>
+                        <input type="text" id="pokemonName" name="pokemonName" required><br><br>
+                        <label for="pokemonCategory">Catégorie:</label>
+                        <input type="text" id="pokemonCategory" name="pokemonCategory" required><br><br>
+                        <label for="pokemonImage">URL de l'image:</label>
+                        <input type="url" id="pokemonImage" name="pokemonImage" required><br><br>
+                        <input type="submit" value="Ajouter">
+                    </form>
+                </li>
+            </ul>
+        </ul>
+    </div>
+
+
 </header>
-
 <body>
-
-
 <div class="container" id="container"></div>
 <button class="button_actualise" id="refresh-icon">Actualiser</button>
+
 
 </body>
 </html>

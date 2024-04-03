@@ -22,3 +22,27 @@
     max-width: 100%;
     height: auto;
 }
+
+/* Pour les écrans de petite taille (moins de 600px de largeur) */
+@media screen and (max-width: 600px) {
+    .container {
+        display: block; /* Affichage en colonne */
+        margin: 0 auto; /* Centrage */
+        width: 100%; /* Largeur maximale */
+    }
+}
+
+/* Pour les écrans de taille moyenne et grande (plus de 600px de largeur) */
+@media screen and (min-width: 601px) {
+    .container {
+        display: flex; /* Affichage en ligne */
+        flex-wrap: wrap; /* Permet à la ligne de se plier */
+        justify-content: space-between; /* Espace équitable entre les éléments */
+        margin: 0 auto; /* Centrage */
+        max-width: 1800px; /* Largeur maximale */
+    }
+    .container .article-container {
+        width: calc(25% - 20px); /* 33.333% de largeur moins l'espace entre les éléments */
+        margin-bottom: 20px; /* Espace entre les lignes */
+    }
+}

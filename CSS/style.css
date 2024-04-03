@@ -1,7 +1,6 @@
 .button_actualise {
     display: block;
     margin: 0 auto;
-
 }
 
 .container{
@@ -10,7 +9,7 @@
 
 .article-container{
     text-align: center;
-    div{
+    p{
         color: red;
     }
     h2{
@@ -18,4 +17,8 @@
         text-transform: uppercase;
         font-size: 20px;
     }
+}
+.article-container img {
+    max-width: 100%;
+    height: auto;
 }

@@ -1,24 +1,106 @@
+html, body {
+    background: #1abc9c;
+}
+
 .button_actualise {
     display: block;
     margin: 0 auto;
 }
 
-.container{
-    background-color: azure;
+.container {
+
 }
 
-.article-container{
+.article-container {
     text-align: center;
-    p{
+    box-shadow: 0 0 20px rgba(5, 5, 5, 1);
+    border-radius: 20px;
+    background-color: azure;
+
+    p {
         color: red;
     }
-    h2{
+
+    h2 {
         color: blue;
         text-transform: uppercase;
         font-size: 20px;
     }
 }
+
 .article-container img {
     max-width: 100%;
     height: auto;
 }
+
+/* Pour les écrans de petite taille (moins de 600px de largeur) */
+@media screen and (max-width: 600px) {
+    .container {
+        display: block; /* Affichage en colonne */
+        margin: 0 auto; /* Centrage */
+        width: 100%; /* Largeur maximale */
+    }
+}
+
+/* Pour les écrans de taille moyenne et grande (plus de 600px de largeur) */
+@media screen and (min-width: 601px) {
+    .container {
+        display: flex; /* Affichage en ligne */
+        flex-wrap: wrap; /* Permet à la ligne de se plier */
+        justify-content: space-between; /* Espace équitable entre les éléments */
+        margin: 0 auto; /* Centrage */
+        max-width: 1800px; /* Largeur maximale */
+    }
+
+    .container .article-container {
+        width: calc(30% - 20px); /* 30% de largeur moins l'espace entre les éléments */
+        margin-bottom: 20px; /* Espace entre les lignes */
+    }
+}
+
+
+
+.header{
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.navbar {
+    background-color: #333; /* Couleur de fond */
+    padding: 10px; /* Espace autour du contenu */
+    z-index: 1000; /* Assure que la barre de menu est au-dessus de tout le reste */
+    position: absolute; /* position fixe */
+    top: 0; /* collé en haut */
+    left: 0; /* collé à gauche */
+}
+.menu {
+    margin: 0;
+    padding: 0;
+    color: white;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover {
+        background-color: #1abc9c; /* Couleur de fond au survol */
+    }
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px;
+    li {
+        list-style-type: none;
+    }
+    a:hover {
+        background-color: #1abc9c;
+    }
+}
+
+.menu:hover .submenu {
+    display: block;
+}
+
+

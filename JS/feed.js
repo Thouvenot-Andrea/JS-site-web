@@ -59,7 +59,7 @@
 //     // si on appuie sur le bouton ça retourne dans la fonction
 // };
 
-function displayPokedex(pokedex){
+function displayPokedex(pokedex) {
     //Créer un conteneur pour chaque article
     const articleContainer = document.createElement('div');
     articleContainer.classList.add('article-container');//créer un class article-container
@@ -89,27 +89,25 @@ function displayPokedex(pokedex){
 }
 
 let nextTodoIndex = 0;
+const maxPosts = 2;
 
 function fetchPokemon() {
     const container = document.getElementById('container');
     container.innerHTML = '';
     fetch('https://tyradex.vercel.app/api/v1/pokemon')
-        .then((response) => {return response.json()})
+        .then((response) => {
+            return response.json()
+        })
         .then(
             (pokemon) => {
-                const maxPosts = 2;
-            for (let i = nextTodoIndex; i < nextTodoIndex + maxPosts; i++) {
-                //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos
-                if (i >= pokemon.length) {
-                    break
-                } else {
-                    const post = pokemon[i];
-                    displayPokedex(post);
+                for (let i = nextTodoIndex; i < nextTodoIndex + maxPosts && pokemon.length; i++) {
+                    //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos
+                    displayPokedex(pokemon[i]);
                 }
-            }
-            nextTodoIndex += maxPosts;
-        });
+                nextTodoIndex += maxPosts;
+            });
 }
+
 window.onload = function () {
     //window.onload est utilisée pour s'assurer que le contenu de la page HTML ainsi que le CSS sans ça rien s'affiche
     fetchPokemon();// appelle la fonction fetchPosts

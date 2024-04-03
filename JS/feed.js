@@ -1,64 +1,4 @@
-// console.log("coucou")
-// // créer une fonction qui récupère le "container" et créer des "éléments"
-// function displayPosts(post) {
-//     // Créer un conteneur pour chaque article
-//     const articleContainer = document.createElement('div');
-//     articleContainer.classList.add('article-container');//créer un class article-container
-//
-//     // Titre de l'article
-//     const title = document.createElement('h2');
-//     title.innerText = post.title;
-//     articleContainer.appendChild(title);
-//
-//     // Contenu principal de l'article
-//     const main = document.createElement('div');
-//     main.innerText = post.body;
-//     articleContainer.appendChild(main);
-//
-//     // Ajouter le conteneur de l'article au conteneur principal
-//     const container = document.getElementById('container');
-//     container.appendChild(articleContainer);
-//
-//     // Ligne de séparation en dehors du conteneur de l'article
-//     const hr = document.createElement('hr');
-//     container.appendChild(hr);
-// }
-//
-// // créer une fonction qui récupère les produits de "url"
-// let nextTodoIndex = 0;
-//
-// function fetchPosts() {
-//     const container = document.getElementById('container');
-//     container.innerHTML = '';
-//     // Envoie une requête GET à l'URL spécifiée pour récupérer des articles (posts)
-//     fetch('https://jsonplaceholder.typicode.com/posts')
-//         // Une fois la réponse reçue, la transforme en format JSON
-//         .then((response) => response.json())
-//         // Une fois les données JSON obtenues, les traite dans la fonction fléchée suivante
-//         .then((posts) => {
-//             const maxPosts = 3;
-//             for (let i = nextTodoIndex; i < nextTodoIndex + maxPosts; i++) {
-//                 //La boucle s'exécutera tant que i est strictement inférieur à nextTodoIndex + maxTodos
-//                 if (i >= posts.length) {
-//                     break
-//                 } else {
-//                     const post = posts[i];
-//                     displayPosts(post);
-//                 }
-//             }
-//             nextTodoIndex += maxPosts;
-//         });
-// }
-// // créer une fonction pour actualiser la page.
-// window.onload = function () {
-//     //window.onload est utilisée pour s'assurer que le contenu de la page HTML ainsi que le CSS sans ça rien s'affiche
-//     fetchPosts();// appelle la fonction fetchPosts
-//     const refreshIcon = document.getElementById('refresh-icon');
-//     // récupère l'élément refresh-icon.
-//     refreshIcon.addEventListener('click', fetchPosts);
-//     // si on appuie sur le bouton ça retourne dans la fonction
-// };
-
+// PARTIE QUI AFFICHE LES POKÉMONS
 function displayPokedex(pokedex) {
     //Créer un conteneur pour chaque article
     const articleContainer = document.createElement('div');
@@ -118,7 +58,7 @@ window.onload = function () {
     // si on appuie sur le bouton ça retourne dans la fonction
 };
 
-
+//BOUTON POUR LE MENU
 document.addEventListener("DOMContentLoaded", function () {
     const menuButton = document.getElementById("menuButton");
     const submenu = document.querySelector(".submenu");
@@ -128,3 +68,87 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Ajouter un écouteur d'événements sur le bouton "Formulaire"
+
+
+
+
+                                                //FORMULAIRE DYNAMIQUE
+
+document.addEventListener("DOMContentLoaded", function () {
+    // DOMContentLoaded est un événement spécifique qui se déclenche lorsque le document HTML a été complètement chargé et analysé dans le navigateur.
+    const existingPokemonNames = new Set();
+    // est une ligne de code qui crée une sorte de liste spéciale pour stocker les noms des Pokémon que j'ai créé
+
+
+                                    // Fonction pour vérifier et ajouter le Pokémon
+    function addPokemon(event) {
+        // Appelle cette fonction à chaque fois que je crée un pokémon
+
+        event.preventDefault();
+        // Permet à la fonction addPokemon de prendre le contrôle pour éviter de rechargé la page entière
+
+
+
+                                            // Récupérer les données du formulaire
+        const formData = new FormData(event.target);
+        // Créer un nouvel objet FormData, quand on soumet le formulaire. C'est une sorte de conteneur qui contient toutes les données du formulaire
+
+        const name = formData.get('pokemonName');
+        // extrait la valeur saisi dans le champ de formulaire Nom du Pokémon et la stocke dans une variable name
+
+        const category = formData.get('pokemonCategory');
+        // extrait la valeur saisi dans le champ de formulaire Catégorie et la stocke dans une variable category
+
+        const imageUrl = formData.get('pokemonImage');
+        // extrait la valeur saisi dans le champ de formulaire URL de l'image et la stocke dans une variable imageUrl
+
+
+        if (existingPokemonNames.has(name)) {
+            // Vérifie si le nom du pokémon rentre existe déja dans la liste existingPokemonNames
+
+            alert('Ce Pokémon existe déjà dans le feed. Veuillez choisir un autre nom.');
+            //  si c'est le cas ça afficher un message d'erreur
+
+            return;
+            //on sort de la fonction pour éviter d'ajouter le Pokémon
+        }
+
+                                        // Créer un objet représentant le Pokémon
+        const newPokemon = {
+            //créer un nouvel object qui représentera les informations sur le nouveau Pokemon qu'on va ajouter à la liste.
+
+            name: {fr: name},
+            // définit la propriété name dans l'objet newPokemon le fr est la clé pour dire que le nom est en français
+
+            category: category,
+            // définit la propriété category dans l'objet newPokemon
+
+            sprites: {regular: imageUrl}
+            // définit la propriété sprites dans l'objet newPokemon qui a pour propriété regular
+
+        };
+
+
+        existingPokemonNames.add(name);
+        // Ajouter le nom du Pokémon dans la liste.
+
+        displayPokedex(newPokemon);
+        // Ajouter le Pokémon en appelant la fonction displayPokedex
+
+        event.target.reset();
+        // Réinitialiser le formulaire
+
+        alert('Le Pokémon a été ajouté avec succès !');
+        // Afficher un message de confirmation
+
+        // Afficher les données dans la console pour vérification
+        console.log('Nom du Pokémon:', name);
+        console.log('Catégorie:', category);
+        console.log('URL de l\'image:', imageUrl);
+    }
+
+    document.getElementById('addPokemonForm').addEventListener('submit', addPokemon);
+    //écoute le formulaire addPokemonForm, lorsque le bouton ajouter est clicker ça créer un nouveau pokémon
+
+});

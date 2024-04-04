@@ -16,6 +16,7 @@ html, body {
     box-shadow: 0 0 20px rgba(5, 5, 5, 1);
     border-radius: 20px;
     background-color: azure;
+    margin: 20px;
 
     p {
         color: red;
@@ -111,7 +112,7 @@ html, body {
     right: 0; /* collé à gauche */
 }
 
-.formulaire{
+.formulaire {
     margin: 0;
     padding: 0;
     color: white;
@@ -129,4 +130,18 @@ html, body {
 .formulaireButton{
     background-color: #333;
     color: white;
+}
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
+}
+.gallery-container.column {
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    height: auto;
 }

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
-    <title>Gallerie</title>
+    <script src="../JS/gallery.js" defer></script> <!-- Utilisation de l'attribut "defer" pour charger le script après le DOM -->
+    <title>Galerie</title>
 </head>
-<header>
+<body>
+<header class="header">
     <nav class="navbar">
         <ul class="menu">
-            <a href="#">Menu</a>
+            <li id="menuButton">Menu</li>
             <ul class="submenu">
                 <li><a href="home.html">Feed</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
@@ -17,9 +19,21 @@
             </ul>
         </ul>
     </nav>
-
 </header>
-<body>
-<script src="../JS/gallery.js"></script>
+<div class="container" id="container">
+</div>
+
+
+
+<div class="gallery">
+    <div class="gallery-options">
+        <button id="mosaic-btn">Mosaïque</button>
+        <button id="column-btn">Colonne</button>
+    </div>
+    <div class="gallery-container">
+
+    </div>
+</div>
+<button class="button_actualise" id="refresh-icon">Actualiser</button>
 </body>
 </html>

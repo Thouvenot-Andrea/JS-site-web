@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,26 +19,29 @@
         </ul>
     </nav>
     <div class="formulaire_hidden">
-        <ul class="formulaire">
-            <li class="formulaireButton" id="formulaire">
+        <div class="formulaire">
+            <button class="formulaireButton" id="formulaire">
                 Formulaire
-            </li>
-            <ul class="submenuFormulaire">
-                <li>
-                    <form class="formulaire1" id="addPokemonForm">
-                        <label for="pokemonName">Nom du Pokémon:</label>
-                        <input type="text" id="pokemonName" name="pokemonName" required><br><br>
-                        <label for="pokemonCategory">Catégorie:</label>
-                        <input type="text" id="pokemonCategory" name="pokemonCategory" required><br><br>
-                        <label for="pokemonImage">URL de l'image:</label>
-                        <input type="url" id="pokemonImage" name="pokemonImage" required><br><br>
-                        <input type="submit" value="Ajouter">
-                    </form>
-                </li>
-            </ul>
-        </ul>
+            </button>
+            <div class="submenuFormulaire">
+                <form class="formulaire1" id="form">
+                    <div>
+                        <label for="pokemonName"></label> nom :</label>
+                        <input type="text" id="pokemonName" name="name">
+                    </div>
+                    <div>
+                        <label for="pokemonCategory"></label> Category :</label>
+                        <input type="text" id="pokemonCategory" name="category">
+                    </div>
+                    <div>
+                        <label for="pokemonUrl"></label> Url :</label>
+                        <input type="text" id="pokemonUrl" name="url">
+                    </div>
+                    <button id="submitButton">Envoyer</button>
+                </form>
+            </div>
+        </div>
     </div>
-
 
 </header>
 <body>

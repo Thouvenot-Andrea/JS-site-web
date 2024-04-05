@@ -106,8 +106,14 @@ urlDiv.style.display = 'none';
 
 // Écouter le clic sur le bouton "+"
 addButton.addEventListener('click', function() {
-    // Afficher le champ URL et le bouton "Envoyer"
-    urlDiv.style.display = 'block';
+    // Vérifier si le champ URL est actuellement affiché ou caché
+    if (urlDiv.style.display === 'block') {
+        // Si le champ URL est affiché, le cacher
+        urlDiv.style.display = 'none';
+    } else {
+        // Sinon, l'afficher
+        urlDiv.style.display = 'block';
+    }
 });
 
 // Écouter le clic sur le bouton "Valider"

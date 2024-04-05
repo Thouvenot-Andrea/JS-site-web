@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css">
-    <script src="../JS/gallery.js" defer></script> <!-- Utilisation de l'attribut "defer" pour charger le script après le DOM -->
+    <link rel="stylesheet" href="../CSS/carrousel.css">
+    <script src="../JS/gallery.js" defer></script>
+    <script src="../JS/carrousel.js" defer></script>
+
+    <!-- Utilisation de l'attribut "defer" pour charger le script après le DOM -->
     <title>Galerie</title>
 </head>
 <body>
+
 <header class="header">
     <nav class="navbar">
         <ul class="menu">
@@ -19,23 +24,76 @@
             </ul>
         </ul>
     </nav>
-    <div class="bouton_img">
-        <div class="img_button">
-            <button class="ajouter_img" id="adding_img">+</button>
-            <div class="url" >
-                <div id="url">
-                    <label for="url">Url :</label>
-                    <input type="text" id="url_input" name="url">
-                    <button id="submitButton">Envoyer</button>
-                </div>
+</header>
+
+<div class="container">
+    <!-- Élément carrousel -->
+    <div class="carousel">
+        <!-- Conteneur interne pour les diapositives -->
+        <div class="carousel-inner">
+            <!-- Première diapositive -->
+            <div class="slide">
+                <!-- Image de la première diapositive -->
+                <img class="img" src="https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/4/regular.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                     alt="Image 1">
+            </div>
+            <!-- Deuxième diapositive -->
+            <div class="slide">
+                <!-- Image de la deuxième diapositive -->
+                <img class="img" src="https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/5/regular.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                     alt="Image 2">
+            </div>
+            <!-- Troisième diapositive -->
+            <div class="slide">
+                <!-- Image de la troisième diapositive -->
+                <img class="img" src="https://raw.githubusercontent.com/Yarkis01/TyraDex/images/sprites/6/regular.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                     alt="Image 3">
             </div>
         </div>
+        <!-- Conteneur pour les boutons de navigation -->
+<!--        <div class="carousel-controls">-->
+<!--            &lt;!&ndash; Bouton pour passer à la diapositive précédente &ndash;&gt;-->
+<!--            <button id="prev">Précédent</button>-->
+<!--            &lt;!&ndash; Bouton pour passer à la diapositive suivante &ndash;&gt;-->
+<!--            <button id="next">Suivant</button>-->
+<!--        </div>-->
+        <!-- Conteneur pour les points de navigation -->
+        <div class="carousel-dots"></div>
     </div>
-</header>
-<div class="container" id="container">
 </div>
 
 
+
+<div class="container" id="container"></div>
+
+<!--Bouton pour ajouter une image-->
+<div class="bouton_img">
+    <div class="img_button">
+        <button id="adding_img">+</button>
+        <div class="url">
+            <div id="url">
+                <label for="url">Url :</label>
+                <input type="text" id="url_input" name="url">
+                <button id="submitButton">Envoyer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Bouton pour enlever une image-->
+<div class="bouton_img_moin">
+    <div class="img_button">
+        <button class="supprimer_img" id="delete_img">-</button>
+        <div class="delete-image-section">
+            <label for="imageUrl">URL:</label>
+            <input type="text" id="imageUrl" name="imageUrl">
+            <button id="deleteImageButton">Supprimer</button>
+        </div>
+
+    </div>
+</div>
+
+<!--Bouton our mettre les images en mosaïque ou en colonne-->
 <div class="gallery">
     <div class="gallery-options">
         <button id="mosaic-btn">Mosaïque</button>
@@ -46,6 +104,7 @@
     </div>
 </div>
 
+<!--Bouton pour actualiser-->
 
 <button class="button_actualise" id="refresh-icon">Actualiser</button>
 

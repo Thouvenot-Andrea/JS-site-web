@@ -76,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// ajout d'une image
+
+                                    // bouton pour ajouter une image
+
+let imageCounter = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
     const validation = document.getElementById("submitButton");
@@ -88,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
             newImage.src = url;
             newImage.style.width = "300px";
             newImage.classList.add('article-container');
+            newImage.classList.add(`image-${imageCounter}`); // Ajouter une classe unique
+            imageCounter++; // Incrémenter le compteur
             const imageContainer = document.getElementById("imageContainer");
             imageContainer.appendChild(newImage)
         }
@@ -96,13 +101,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 })
-
 const addButton = document.getElementById('adding_img');
 const urlDiv = document.querySelector('.url');
 const submitButton = document.getElementById('submitButton');
 
 // Cacher le champ URL et le bouton "Envoyer" initialement
 urlDiv.style.display = 'none';
+
 
 // Écouter le clic sur le bouton "+"
 addButton.addEventListener('click', function() {
@@ -116,8 +121,51 @@ addButton.addEventListener('click', function() {
     }
 });
 
-// Écouter le clic sur le bouton "Valider"
+
+// Pour cacher quand on appuie sur le bouton valider"
 submitButton.addEventListener('click', function() {
     // Cacher le champ URL et le bouton "Envoyer"
     urlDiv.style.display = 'none';
 });
+
+
+
+
+
+
+                                        //  bouton "Supprimer l'image"
+
+const deleteImageButton = document.getElementById('deleteImageButton');
+
+// Ajout d'un gestionnaire d'événements pour le clic sur le bouton "Supprimer l'image"
+deleteImageButton.addEventListener('click', function() {
+    // Récupérer l'URL de l'image saisie par l'utilisateur
+    const imageUrlInput = document.getElementById('imageUrl');
+    const imageUrl = imageUrlInput.value;
+
+    // Sélectionner l'image avec l'URL spécifiée et la supprimer
+    const imageToDelete = document.querySelector(`img[src="${imageUrl}"]`);
+    if (imageToDelete) {
+        imageToDelete.parentNode.removeChild(imageToDelete);
+    }
+});
+
+const deleteButton = document.getElementById('delete_img');
+const deleteImageSection = document.querySelector('.delete-image-section');
+
+// Cacher le champ URL et le bouton "Supprimer l'image" initialement
+deleteImageSection.style.display = 'none';
+
+
+// Écouter le clic sur le bouton "-"
+deleteButton.addEventListener('click', function() {
+    // Vérifier si la section de suppression d'image est actuellement affichée ou cachée
+    if (deleteImageSection.style.display === 'block') {
+        // Si la section est affichée, la cacher
+        deleteImageSection.style.display = 'none';
+    } else {
+        // Sinon, l'afficher
+        deleteImageSection.style.display = 'block';
+    }
+});
+

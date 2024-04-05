@@ -47,7 +47,27 @@
 <body>
 <div class="container" id="container"></div>
 <button class="button_actualise" id="refresh-icon">Actualiser</button>
+<script>
+    // Récupérer les éléments du DOM
+    const formulaireButton = document.getElementById('formulaire');
+    const submenuFormulaire = document.querySelector('.submenuFormulaire');
+    const submitButton = document.getElementById('submitButton');
 
+    // Cacher le formulaire initialement
+    submenuFormulaire.style.display = 'none';
 
+    // Écouter le clic sur le bouton "Formulaire"
+    formulaireButton.addEventListener('click', function() {
+        // Afficher le formulaire
+        submenuFormulaire.style.display = 'block';
+    });
+
+    // Écouter le clic sur le bouton "Envoyer"
+    submitButton.addEventListener('click', function() {
+        // Cacher le formulaire après l'envoi
+        submenuFormulaire.style.display = 'none';
+    });
+
+</script>
 </body>
 </html>

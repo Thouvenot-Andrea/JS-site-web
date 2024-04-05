@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
+// bouton de colonne et mosaïque
 
 document.addEventListener("DOMContentLoaded", function() {
     const mosaicBtn = document.getElementById("mosaic-btn");
@@ -76,3 +76,42 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+// ajout d'une image
+
+document.addEventListener("DOMContentLoaded", function () {
+    const validation = document.getElementById("submitButton");
+
+    validation.addEventListener("click", function () {
+        const url = document.getElementById("url_input").value;
+        if (url) {
+            const newImage = document.createElement("img");
+            newImage.src = url;
+            newImage.style.width = "300px";
+            newImage.classList.add('article-container');
+            const imageContainer = document.getElementById("imageContainer");
+            imageContainer.appendChild(newImage)
+        }
+        document.getElementById("url_input").value = "";
+    });
+
+
+})
+
+const addButton = document.getElementById('adding_img');
+const urlDiv = document.querySelector('.url');
+const submitButton = document.getElementById('submitButton');
+
+// Cacher le champ URL et le bouton "Envoyer" initialement
+urlDiv.style.display = 'none';
+
+// Écouter le clic sur le bouton "+"
+addButton.addEventListener('click', function() {
+    // Afficher le champ URL et le bouton "Envoyer"
+    urlDiv.style.display = 'block';
+});
+
+// Écouter le clic sur le bouton "Valider"
+submitButton.addEventListener('click', function() {
+    // Cacher le champ URL et le bouton "Envoyer"
+    urlDiv.style.display = 'none';
+});

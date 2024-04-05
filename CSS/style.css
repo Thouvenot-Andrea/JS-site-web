@@ -145,3 +145,17 @@ html, body {
     max-width: 100%;
     height: auto;
 }
+.bouton_img{
+    padding: 10px; /* Espace autour du contenu */
+    z-index: 1000; /* Assure que la barre de menu est au-dessus de tout le reste */
+    position: absolute; /* position fixe */
+    top: 0; /* collé en haut */
+    right: 0;
+}
+.url {
+    display: none;
+    /*position: absolute;*/
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
